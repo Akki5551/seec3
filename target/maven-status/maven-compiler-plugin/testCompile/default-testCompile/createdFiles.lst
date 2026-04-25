@@ -4,8 +4,8 @@ PageObjects\Myaccount.class
 Utilities\ExtentReport.class
 PageObjects\Homepage.class
 PageObjects\BasePage.class
-Testcases\TC_001_Register.class
 Utilities\ExcelUtility.class
+Testcases\TC_008_Register.class
 Testcases\TC_002_Login.class
 TestBase\BaseClass.class
 PageObjects\Register.class
