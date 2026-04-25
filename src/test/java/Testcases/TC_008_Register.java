@@ -7,7 +7,7 @@ import PageObjects.Homepage;
 import PageObjects.Register;
 import TestBase.BaseClass;
 
-public class TC_001_Register extends BaseClass
+public class TC_008_Register extends BaseClass
 {
     public SoftAssert sa;
 
