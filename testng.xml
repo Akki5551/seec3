@@ -12,7 +12,7 @@
 <listeners> 
     <listener class-name="Utilities.ExtentReport"/>
 </listeners>
-  <test  name="Test">
+  <test  name="Test11">
   <parameter name="os" value="windows"/>
   <parameter name="browser" value="edge"/>
     <classes>
