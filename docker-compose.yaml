@@ -1,0 +1,45 @@
+version: "3.9"
+services:
+  selenium-hub:
+    image: selenium/hub:4.20.0
+    container_name: selenium-hub
+    ports:
+      - "4442:4442"   # Event bus
+      - "4443:4443"   # Event bus
+      - "4444:4444"   # Hub UI / API
+    networks:
+      - selenium-grid
+
+  chrome:
+    image: selenium/node-chrome:4.20.0
+    container_name: chrome-node
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+	  - SE_NODE_MAX_SESSIONS=4
+	  - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+    networks:
+      - selenium-grid
+
+  edge:
+    image: selenium/node-edge:4.20.0
+    container_name: edge-node
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+	  - SE_NODE_MAX_SESSIONS=4
+	  - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+    networks:
+      - selenium-grid
+
+networks:
+  selenium-grid:
+    driver: bridge
